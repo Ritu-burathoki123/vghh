@@ -17,6 +17,11 @@ function SideBar() {
                 <Link to="/lectures" className="text-white font-bold">Lectures</Link>
             </div>
             <div className="flex space-x-4">
+                <GiTeacher />
+                <Link to="/students" className="text-white font-bold">Students</Link>
+            </div>
+
+            <div className="flex space-x-4">
                 <MdQuiz />
                 <Link to="/quizs" className="text-white font-bold">Quizs</Link>
             </div>

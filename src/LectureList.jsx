@@ -1,21 +1,26 @@
 import React from "react";
 import axios from 'axios';
 import UserRow from "./UserRow";
+import { useEffect } from "react";
 
 function LectureList() {
-  const token = axios.get("https://randomuser.me/api/?results=5");
-  let [users, setUsers] = React.useState([]);
+  let [lectures, setLectures] = React.useState([]);
 
-  token.then((response) => {
-    console.log("response aa gya response aa gya");
-    setUsers(response.data.results);
-    console.log(response.data.results);
-  });
-  console.log("aage badho");
+
+
+  useEffect(() => {
+    const token = axios.get(`https://api.codeyogi.io/batches/1/sessions`, { withCredentials: true, });
+
+    token.then((response) => {
+      setLectures(response.data)
+    });
+  }, []);
+
+
   return (
     <div className="h-full bg-gray-200 ">
       <h1 className="text-9xl">user list</h1>
-      {users.map((u) => (<UserRow user={u} />))}
+      {lectures.map((l) => (<LectureRow lecture={l} />))}
     </div>
 
   );
